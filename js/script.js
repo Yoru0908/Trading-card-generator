@@ -559,7 +559,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ui.romajiYValue.textContent = romajiY;
             updateAllDynamicLabels();
         },
-        fontStyles() {
+        updateFontAndWeight() {
             const themeFont = ui.themeFontFamily.value;
             ui.previewTheme.style.fontFamily = themeFont;
             ui.previewThemeLine2.style.fontFamily = themeFont;
@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             const themeWeight = ui.themeWeight.value;
             ui.previewTheme.style.fontWeight = themeWeight;
-            ui.previewThemeLine2.style.fontWeight = themeWeight; // Both lines share same weight slider for simplicity
+            ui.previewThemeLine2.style.fontWeight = themeWeight;
             ui.themeWeightInput.value = themeWeight;
 
             ui.previewName.style.fontWeight = ui.memberNameWeight.value;
@@ -578,7 +578,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             ui.previewRomaji.style.fontWeight = ui.romajiNameWeight.value;
             ui.romajiNameWeightInput.value = ui.romajiNameWeight.value;
-
+        },
+        updateLetterSpacing() {
             const themeLetterSpacing = ui.themeLetterSpacing.value;
             ui.previewTheme.style.letterSpacing = `${themeLetterSpacing}px`;
             ui.previewThemeLine2.style.letterSpacing = `${themeLetterSpacing}px`;
@@ -591,7 +592,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const romajiNameLetterSpacing = ui.romajiNameLetterSpacing.value;
             ui.previewRomaji.style.letterSpacing = `${romajiNameLetterSpacing}px`;
             ui.romajiNameLetterSpacingValue.textContent = romajiNameLetterSpacing;
-
+            
             updateAllDynamicLabels();
         },
         groupTheme() {
@@ -743,8 +744,9 @@ document.addEventListener('DOMContentLoaded', function () {
         [ui.infoBarPaddingY, ui.logoSize, ui.groupNameSize, ui.themeSize, ui.themeLine2Size, ui.memberNameSize, ui.romajiNameSize].forEach(el => addInputListener(el, update.sizes));
         [ui.logoX, ui.logoY, ui.groupNameX, ui.groupNameY, ui.themeX, ui.themeY, ui.themeLine2X, ui.themeLine2Y, ui.nameX, ui.nameY, ui.romajiX, ui.romajiY].forEach(el => addInputListener(el, update.elementPositions));
         
-        [ui.themeFontFamily, ui.nameFontFamily].forEach(el => addChangeListener(el, update.fontStyles));
-        [ui.themeWeight, ui.memberNameWeight, ui.romajiNameWeight, ui.themeLetterSpacing, ui.memberNameLetterSpacing, ui.romajiNameLetterSpacing].forEach(el => addInputListener(el, update.fontStyles));
+        [ui.themeFontFamily, ui.nameFontFamily].forEach(el => addChangeListener(el, update.updateFontAndWeight));
+        [ui.themeWeight, ui.memberNameWeight, ui.romajiNameWeight].forEach(el => addInputListener(el, update.updateFontAndWeight));
+        [ui.themeLetterSpacing, ui.memberNameLetterSpacing, ui.romajiNameLetterSpacing].forEach(el => addInputListener(el, update.updateLetterSpacing));
 
         addInputListener(ui.memberName, (e) => ui.previewName.textContent = e.target.value);
         addInputListener(ui.romajiName, (e) => ui.previewRomaji.textContent = e.target.value);
