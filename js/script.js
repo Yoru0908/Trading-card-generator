@@ -5,20 +5,20 @@ const translations = {
         mainTitle: "Photo Card Generator",
         customContentTitle: "Customize Content",
         uploadMainImageLabel: "1. Upload Main Image",
-        memberNameLabel: "3. Member Name",
+        memberNameLabel: "2. Member Name",
         memberNamePlaceholder: "Enter member's name",
-        romajiNameLabel: "4. Romaji (Optional)",
+        romajiNameLabel: "3. Romaji (Optional)",
         romajiNamePlaceholder: "Enter Romaji",
-        photoThemeLabelLine1: "5. Theme",
-        photoThemeLabelLine2: "5b. Theme (Line 2, Optional)",
+        photoThemeLabelLine1: "4. Theme",
+        photoThemeLabelLine2: "5. Theme (Line 2, Optional)",
         photoThemePlaceholder: "Enter theme",
-        groupNameLabel: "2. Group Name",
+        groupNameLabel: "6. Group Name",
         colorsAndBordersLabel: "7. Colors & Borders",
         infoBarBgColorLabel: "Info Bar BG Color",
         textColorLabel: "Text/Logo Color",
         infoBarBorderLabel: "Info Bar Border",
         thicknessLabel: "Thickness: {value}px",
-        sizePositionTuningLabel: "8. Size & Position Tuning",
+        advancedSettingsLabel: "8. Advanced Settings",
         customLogoLabel: "Custom Logo",
         resetInfoBarLabel: "Reset Info Bar",
         resetButton: "Reset",
@@ -26,10 +26,6 @@ const translations = {
         marginBottomLabel: "Bottom Margin: {value}px",
         marginXLabel: "Side Margin: {value}px",
         fontAndSizeTuningLabel: "Font & Size Tuning",
-        infoBarPositionAndSizeLabel: "・Info Bar Size",
-        sizeAdjustmentLabel: "・Element Size Tuning",
-        fontStyleLabel: "6. Font Style",
-        resetInfoBarButton: "Reset Info Bar",
         showRomajiLabel: "Show Romaji",
         showThemeLine2Label: "Show Theme Line 2",
         infoBarPaddingYLabel: "Info Bar Padding: {value}px",
@@ -39,7 +35,7 @@ const translations = {
         themeLine2SizeLabel: "Theme L2 Size: {value}px",
         memberNameSizeLabel: "Name Size: {value}px",
         romajiNameSizeLabel: "Romaji Size: {value}px",
-        elementPositionTuningLabel: "・Element Position Tuning",
+        elementPositionTuningLabel: "Element Position Tuning",
         logoPositionLabel: "Logo Position",
         horizontalPositionLabel: "Horizontal (X): {value}px",
         verticalPositionLabel: "Vertical (Y): {value}px",
@@ -79,31 +75,26 @@ const translations = {
         fontLoaded: "Font \"{fontName}\" loaded successfully!",
         fontError: "Font loading failed. Please check the file format.",
         customFontSuffix: " (Custom)",
-        longPressInstruction: "Long-press the image to save",
-        uploadImagePlaceholder: "Please upload an image",
-        uploadImageHint: "Supports JPG, PNG formats",
-        createdBy: "Created by",
-        currentYear: "2025",
-        footerDescription: "Photo Template Generator - Made for Sakamichi Idol Fans"
+        longPressInstruction: "Long-press the image to save"
     },
     ja: {
         mainTitle: "生写真ジェネレーター",
         customContentTitle: "コンテンツのカスタマイズ",
         uploadMainImageLabel: "1. メイン画像のアップロード",
-        memberNameLabel: "3. メンバー名",
+        memberNameLabel: "2. メンバー名",
         memberNamePlaceholder: "メンバー名を入力",
-        romajiNameLabel: "4. ローマ字 (任意)",
+        romajiNameLabel: "3. ローマ字 (任意)",
         romajiNamePlaceholder: "ローマ字を入力",
-        photoThemeLabelLine1: "5. テーマ",
-        photoThemeLabelLine2: "5b. テーマ（2行目、任意）",
+        photoThemeLabelLine1: "4. テーマ",
+        photoThemeLabelLine2: "5. テーマ（2行目、任意）",
         photoThemePlaceholder: "テーマを入力",
-        groupNameLabel: "2. グループ名",
+        groupNameLabel: "6. グループ名",
         colorsAndBordersLabel: "7. 色と枠線",
         infoBarBgColorLabel: "情報バーの背景色",
         textColorLabel: "文字/ロゴの色",
         infoBarBorderLabel: "情報バーの枠線",
         thicknessLabel: "太さ: {value}px",
-        sizePositionTuningLabel: "8. サイズと位置の調整",
+        advancedSettingsLabel: "8. 詳細設定",
         customLogoLabel: "カスタムロゴ",
         resetInfoBarLabel: "情報バーをリセット",
         resetButton: "リセット",
@@ -111,10 +102,6 @@ const translations = {
         marginBottomLabel: "下マージン: {value}px",
         marginXLabel: "左右マージン: {value}px",
         fontAndSizeTuningLabel: "フォントとサイズの調整",
-        infoBarPositionAndSizeLabel: "・情報バーのサイズ",
-        sizeAdjustmentLabel: "・要素サイズ調整",
-        fontStyleLabel: "6. フォントスタイル",
-        resetInfoBarButton: "情報バーをリセット",
         showRomajiLabel: "ローマ字を表示",
         showThemeLine2Label: "テーマの2行目を表示",
         infoBarPaddingYLabel: "情報バーのパディング: {value}px",
@@ -124,7 +111,7 @@ const translations = {
         themeLine2SizeLabel: "テーマ2行目サイズ: {value}px",
         memberNameSizeLabel: "名前サイズ: {value}px",
         romajiNameSizeLabel: "ローマ字サイズ: {value}px",
-        elementPositionTuningLabel: "・要素位置の微調整",
+        elementPositionTuningLabel: "要素位置の微調整",
         logoPositionLabel: "ロゴの位置",
         horizontalPositionLabel: "水平位置 (X): {value}px",
         verticalPositionLabel: "垂直位置 (Y): {value}px",
@@ -164,31 +151,26 @@ const translations = {
         fontLoaded: "フォント\"{fontName}\"の読み込みに成功しました！",
         fontError: "フォントの読み込みに失敗しました。ファイル形式を確認してください。",
         customFontSuffix: " (カスタム)",
-        longPressInstruction: "画像を長押しして保存してください",
-        uploadImagePlaceholder: "画像をアップロードしてください",
-        uploadImageHint: "JPG、PNG形式に対応",
-        createdBy: "作成者",
-        currentYear: "2025",
-        footerDescription: "生写真テンプレートジェネレーター - 坂道系アイドルファンのために"
+        longPressInstruction: "画像を長押しして保存してください"
     },
     zh: {
         mainTitle: "生写真模板生成器",
         customContentTitle: "自定义内容",
         uploadMainImageLabel: "1. 上传主图片",
-        memberNameLabel: "3. 成员姓名",
+        memberNameLabel: "2. 成员姓名",
         memberNamePlaceholder: "请输入成员姓名",
-        romajiNameLabel: "4. 罗马字 (可选)",
+        romajiNameLabel: "3. 罗马字 (可选)",
         romajiNamePlaceholder: "请输入罗马字",
-        photoThemeLabelLine1: "5. 主题",
-        photoThemeLabelLine2: "5b. 主题 (第二行, 可选)",
+        photoThemeLabelLine1: "4. 主题",
+        photoThemeLabelLine2: "5. 主题 (第二行, 可选)",
         photoThemePlaceholder: "请输入主题",
-        groupNameLabel: "2. 团体名字",
+        groupNameLabel: "6. 团体名字",
         colorsAndBordersLabel: "7. 颜色与边框",
         infoBarBgColorLabel: "信息栏底色",
         textColorLabel: "文字/Logo颜色",
         infoBarBorderLabel: "信息栏边框",
         thicknessLabel: "粗细: {value}px",
-        sizePositionTuningLabel: "8. 尺寸位置微调",
+        advancedSettingsLabel: "8. 高级设置",
         customLogoLabel: "自定义Logo",
         resetInfoBarLabel: "信息栏重置",
         resetButton: "重置",
@@ -196,10 +178,6 @@ const translations = {
         marginBottomLabel: "下边距: {value}px",
         marginXLabel: "左右边距: {value}px",
         fontAndSizeTuningLabel: "字体与尺寸微调",
-        infoBarPositionAndSizeLabel: "・信息栏尺寸",
-        sizeAdjustmentLabel: "・元素尺寸微调",
-        fontStyleLabel: "6. 字体样式",
-        resetInfoBarButton: "重置信息栏",
         showRomajiLabel: "显示罗马字",
         showThemeLine2Label: "显示主题第二行",
         infoBarPaddingYLabel: "信息栏内边距: {value}px",
@@ -209,7 +187,7 @@ const translations = {
         themeLine2SizeLabel: "主题二行大小: {value}px",
         memberNameSizeLabel: "姓名大小: {value}px",
         romajiNameSizeLabel: "罗马字大小: {value}px",
-        elementPositionTuningLabel: "・元素位置微调",
+        elementPositionTuningLabel: "元素位置微调",
         logoPositionLabel: "Logo 位置",
         horizontalPositionLabel: "水平位置 (X): {value}px",
         verticalPositionLabel: "垂直位置 (Y): {value}px",
@@ -249,12 +227,7 @@ const translations = {
         fontLoaded: "字体 \"{fontName}\" 加载成功!",
         fontError: "字体加载失败，请检查文件格式。",
         customFontSuffix: " (自定义)",
-        longPressInstruction: "请长按图片保存",
-        uploadImagePlaceholder: "请上传图片",
-        uploadImageHint: "支持 JPG、PNG 格式",
-        createdBy: "Created by",
-        currentYear: "2025",
-        footerDescription: ""
+        longPressInstruction: "请长按图片保存"
     }
 };
 
@@ -279,16 +252,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 el.placeholder = translations[lang][key];
             }
         });
-        
-        // 控制底部描述文本的显示/隐藏
-        const footerDescription = document.getElementById('footer-description');
-        if (footerDescription) {
-            if (lang === 'zh') {
-                footerDescription.style.display = 'none';
-            } else {
-                footerDescription.style.display = 'block';
-            }
-        }
         
         updateAllDynamicLabels();
     };
@@ -325,7 +288,6 @@ document.addEventListener('DOMContentLoaded', function () {
         downloadBtn: document.getElementById('download-btn'),
         loadingText: document.getElementById('loading-text'),
         previewImage: document.getElementById('preview-image'),
-        placeholderContent: document.getElementById('placeholder-content'),
         imageContainer: document.getElementById('image-container'),
         svgLogo: document.getElementById('svg-logo'),
         imageLogo: document.getElementById('image-logo'),
@@ -765,9 +727,6 @@ document.addEventListener('DOMContentLoaded', function () {
         ui.cropBtn.addEventListener('click', () => {
             if (cropper) {
                 ui.previewImage.src = cropper.getCroppedCanvas().toDataURL('image/png');
-                // 显示图片，隐藏占位内容
-                ui.previewImage.classList.remove('hidden');
-                ui.placeholderContent.classList.add('hidden');
                 resetImageTransform();
                 cropper.destroy();
                 cropper = null;
