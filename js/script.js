@@ -326,7 +326,6 @@ document.addEventListener('DOMContentLoaded', function () {
         loadingText: document.getElementById('loading-text'),
         previewImage: document.getElementById('preview-image'),
         placeholderContent: document.getElementById('placeholder-content'),
-        placeholderContent: document.getElementById('placeholder-content'),
         imageContainer: document.getElementById('image-container'),
         svgLogo: document.getElementById('svg-logo'),
         imageLogo: document.getElementById('image-logo'),
