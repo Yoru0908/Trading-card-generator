@@ -280,13 +280,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         
-        // 控制底部描述文本的显示/隐藏
+        // 控制底部描述文本和站点链接的显示/隐藏
         const footerDescription = document.getElementById('footer-description');
+        const siteLinks = document.getElementById('site-links');
+
         if (footerDescription) {
             if (lang === 'zh') {
                 footerDescription.style.display = 'none';
             } else {
                 footerDescription.style.display = 'block';
+            }
+        }
+
+        if (siteLinks) {
+            if (lang === 'zh') {
+                siteLinks.style.display = 'block';
+            } else {
+                siteLinks.style.display = 'none';
             }
         }
         
