@@ -326,6 +326,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loadingText: document.getElementById('loading-text'),
         previewImage: document.getElementById('preview-image'),
         placeholderContent: document.getElementById('placeholder-content'),
+        placeholderContent: document.getElementById('placeholder-content'),
         imageContainer: document.getElementById('image-container'),
         svgLogo: document.getElementById('svg-logo'),
         imageLogo: document.getElementById('image-logo'),
@@ -765,6 +766,10 @@ document.addEventListener('DOMContentLoaded', function () {
         ui.cropBtn.addEventListener('click', () => {
             if (cropper) {
                 ui.previewImage.src = cropper.getCroppedCanvas().toDataURL('image/png');
+                ui.previewImage.classList.remove('hidden');
+                if (ui.placeholderContent) {
+                    ui.placeholderContent.classList.add('hidden');
+                }
                 resetImageTransform();
                 cropper.destroy();
                 cropper = null;
