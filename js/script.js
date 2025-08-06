@@ -2,7 +2,7 @@
 
 const translations = {
     en: {
-        mainTitle: "Sakamichi Photo Card Generator",
+        mainTitle: "Sakamichi Trading Card Generator",
         siteDescription: "Free online generator for Sakamichi Series Trading cards<br>(Sakurazaka46, Nogizaka46, Hinatazaka46)<br>Easily customize to create and download your photo cards with one click.",
         customContentTitle: "Customize Content",
         uploadMainImageLabel: "1. Upload Main Image",
@@ -57,6 +57,8 @@ const translations = {
         sansSerifFont: "System Sans-Serif",
         nameFontLabel: "Name/Romaji",
         uploadCustomFontLabel: "Upload Custom Font",
+        searchFontsLink: "(🔍 Search Fonts)",
+        fontUploadHint: "💡 Tip: Download font files from Google Fonts and upload them directly",
         themeWeightLabel: "Theme Weight:",
         nameWeightLabel: "Name Weight:",
         romajiWeightLabel: "Romaji Weight:",
@@ -143,6 +145,8 @@ const translations = {
         sansSerifFont: "システム サンセリフ",
         nameFontLabel: "名前/ローマ字",
         uploadCustomFontLabel: "カスタムフォントをアップロード",
+        searchFontsLink: "(🔍 フォント検索)",
+        fontUploadHint: "💡 ヒント：Google Fontsからフォントファイルをダウンロードして直接アップロードできます",
         themeWeightLabel: "テーマの太さ:",
         nameWeightLabel: "名前の太さ:",
         romajiWeightLabel: "ローマ字の太さ:",
@@ -229,6 +233,8 @@ const translations = {
         sansSerifFont: "系统无衬线体",
         nameFontLabel: "姓名/罗马字",
         uploadCustomFontLabel: "上传自定义字体",
+        searchFontsLink: "(🔍 搜索字体)",
+        fontUploadHint: "💡 提示：从Google Fonts下载字体文件后，可直接上传使用",
         themeWeightLabel: "主题粗细:",
         nameWeightLabel: "姓名粗细:",
         romajiWeightLabel: "罗马字粗细:",
@@ -268,6 +274,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const setLanguage = (lang) => {
         currentLang = lang;
         document.documentElement.lang = lang;
+
+        // Update page title
+        if (translations[lang] && translations[lang].mainTitle) {
+            document.title = translations[lang].mainTitle;
+        }
+
+        // Ensure consistent font weight for main title across languages
+        const mainTitleEl = document.getElementById('main-title');
+        if (mainTitleEl) {
+            mainTitleEl.style.fontWeight = '700';
+        }
 
         document.querySelectorAll('[data-translate]').forEach(el => {
             const key = el.getAttribute('data-translate');
