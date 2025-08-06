@@ -1020,6 +1020,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const computedStyle = getComputedStyle(item.el);
                     ctx.fillStyle = computedStyle.color;
                     ctx.font = `${computedStyle.fontWeight} ${computedStyle.fontSize} ${computedStyle.fontFamily}`;
+                    ctx.letterSpacing = computedStyle.letterSpacing;
                     ctx.textAlign = computedStyle.textAlign;
                     ctx.textBaseline = 'middle';
 
@@ -1037,23 +1038,17 @@ document.addEventListener('DOMContentLoaded', function () {
             // 4. Trigger download
             const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
-            try {
-                if (isMobile) {
-                    ui.finalImage.src = finalCanvas.toDataURL('image/jpeg', 0.9);
-                    ui.saveModal.classList.remove('hidden');
-                    ui.saveModal.classList.add('flex');
-                } else {
-                    const finalLink = document.createElement('a');
-                    const memberName = ui.memberName.value.trim() || 'member';
-                    const theme = ui.photoTheme.value.trim() || 'custom';
-                    finalLink.download = `photo_card_${memberName}_${theme.replace(/\s+/g, '_')}.jpg`;
-                    finalLink.href = finalCanvas.toDataURL('image/jpeg', 0.9);
-                    finalLink.click();
-                }
-            } catch (error) {
-                console.error('图片生成失败:', error);
-                ui.errorMessage.textContent = '图片生成失败，请检查图片是否正确加载';
-                ui.errorModal.classList.remove('hidden');
+            if (isMobile) {
+                ui.finalImage.src = finalCanvas.toDataURL('image/png');
+                ui.saveModal.classList.remove('hidden');
+                ui.saveModal.classList.add('flex');
+            } else {
+                const finalLink = document.createElement('a');
+                const memberName = ui.memberName.value.trim() || 'member';
+                const theme = ui.photoTheme.value.trim() || 'custom';
+                finalLink.download = `photo_card_${memberName}_${theme.replace(/\s+/g, '_')}.png`;
+                finalLink.href = finalCanvas.toDataURL('image/png');
+                finalLink.click();
             }
 
         } catch (err) {
