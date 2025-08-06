@@ -21,7 +21,7 @@ const translations = {
         thicknessLabel: "Thickness: {value}px",
         sizePositionTuningLabel: "8. Size & Position Tuning",
         customLogoLabel: "Custom Logo",
-        resetInfoBarLabel: "Reset Info Bar",
+        resetInfoBarLabel: "Reset All Parameters",
         resetButton: "Reset",
         infoBarPositionLabel: "Info Bar Position",
         marginBottomLabel: "Bottom Margin: {value}px",
@@ -30,7 +30,7 @@ const translations = {
         infoBarPositionAndSizeLabel: "・Info Bar Size",
         sizeAdjustmentLabel: "・Element Size Tuning",
         fontStyleLabel: "6. Font Style",
-        resetInfoBarButton: "Reset Info Bar",
+        resetInfoBarButton: "Reset All Parameters",
         showRomajiLabel: "Show Romaji",
         showThemeLine2Label: "Show Theme Line 2",
         infoBarPaddingYLabel: "Info Bar Padding: {value}px",
@@ -107,7 +107,7 @@ const translations = {
         thicknessLabel: "太さ: {value}px",
         sizePositionTuningLabel: "8. サイズと位置の調整",
         customLogoLabel: "カスタムロゴ",
-        resetInfoBarLabel: "情報バーをリセット",
+        resetInfoBarLabel: "すべてのパラメータをリセット",
         resetButton: "リセット",
         infoBarPositionLabel: "情報バーの位置",
         marginBottomLabel: "下マージン: {value}px",
@@ -116,7 +116,7 @@ const translations = {
         infoBarPositionAndSizeLabel: "・情報バーのサイズ",
         sizeAdjustmentLabel: "・要素サイズ調整",
         fontStyleLabel: "6. フォントスタイル",
-        resetInfoBarButton: "情報バーをリセット",
+        resetInfoBarButton: "すべてのパラメータをリセット",
         showRomajiLabel: "ローマ字を表示",
         showThemeLine2Label: "テーマの2行目を表示",
         infoBarPaddingYLabel: "情報バーのパディング: {value}px",
@@ -193,7 +193,7 @@ const translations = {
         thicknessLabel: "粗细: {value}px",
         sizePositionTuningLabel: "8. 尺寸位置微调",
         customLogoLabel: "自定义Logo",
-        resetInfoBarLabel: "信息栏重置",
+        resetInfoBarLabel: "重置所有参数",
         resetButton: "重置",
         infoBarPositionLabel: "信息栏位置",
         marginBottomLabel: "下边距: {value}px",
@@ -202,7 +202,7 @@ const translations = {
         infoBarPositionAndSizeLabel: "・信息栏尺寸",
         sizeAdjustmentLabel: "・元素尺寸微调",
         fontStyleLabel: "6. 字体样式",
-        resetInfoBarButton: "重置信息栏",
+        resetInfoBarButton: "重置所有参数",
         showRomajiLabel: "显示罗马字",
         showThemeLine2Label: "显示主题第二行",
         infoBarPaddingYLabel: "信息栏内边距: {value}px",
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const setLanguage = (lang) => {
         currentLang = lang;
         document.documentElement.lang = lang;
-        
+
         document.querySelectorAll('[data-translate]').forEach(el => {
             const key = el.getAttribute('data-translate');
             if (translations[lang] && translations[lang][key]) {
@@ -276,13 +276,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
+        // Explicitly update site description to fix translation bug.
+        const siteDescriptionEl = document.getElementById('site-description');
+        if (siteDescriptionEl && translations[lang] && translations[lang].siteDescription) {
+            siteDescriptionEl.innerHTML = translations[lang].siteDescription;
+        }
+
         document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
             const key = el.getAttribute('data-translate-placeholder');
-             if (translations[lang] && translations[lang][key]) {
+            if (translations[lang] && translations[lang][key]) {
                 el.placeholder = translations[lang][key];
             }
         });
-        
+
         // 控制底部描述文本和站点链接的显示/隐藏
         const footerDescription = document.getElementById('footer-description');
         const siteLinks = document.getElementById('site-links');
@@ -295,12 +301,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        
+
         updateAllDynamicLabels();
     };
 
     const updateAllDynamicLabels = () => {
-         document.querySelectorAll('[data-translate-template]').forEach(label => {
+        document.querySelectorAll('[data-translate-template]').forEach(label => {
             const key = label.getAttribute('data-translate-template');
             const valueSpan = label.querySelector('span');
             if (valueSpan && translations[currentLang] && translations[currentLang][key]) {
@@ -314,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     };
-    
+
     // --- Element Cache ---
     const ui = {
         languageSwitcher: document.getElementById('language-switcher'),
@@ -428,7 +434,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '乃木坂46': { bg: '#742581', text: '#FFFFFF', border: '#742581', bodyBg: '#f0f2f5', titleColor: '#742581' },
         '日向坂46': { bg: '#7cc7e8', text: '#FFFFFF', border: '#7cc7e8', bodyBg: '#7cc7e8', titleColor: '#FFFFFF' }
     };
-    
+
     const groupLogos = {
         '櫻坂46': 'images/樱坂46logo.png',
         '日向坂46': 'images/日向坂46logo.png',
@@ -440,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '日向坂46': 'images/日向坂46文字.png',
         '乃木坂46': 'images/乃木坂46文字.png'
     };
-    
+
     let imageState = { scale: 1, translateX: 0, translateY: 0 };
     let isDragging = false;
     let startX, startY;
@@ -493,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             ui.groupNameImage.style.height = `${ui.groupNameSize.value}px`;
             ui.groupNameSizeValue.textContent = ui.groupNameSize.value;
-            
+
             ui.previewTheme.style.fontSize = `${ui.themeSize.value}px`;
             ui.themeSizeValue.textContent = ui.themeSize.value;
 
@@ -527,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ui.themeBlock.style.transform = `translate(calc(-50% + ${themeX}px), calc(-50% + ${themeY}px))`;
             ui.themeXValue.textContent = themeX;
             ui.themeYValue.textContent = themeY;
-            
+
             const themeLine2X = ui.themeLine2X.value;
             const themeLine2Y = ui.themeLine2Y.value;
             ui.themeLine2Block.style.transform = `translate(calc(-50% + ${themeLine2X}px), calc(-50% + ${themeLine2Y}px))`;
@@ -568,7 +574,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const romajiNameLetterSpacing = ui.romajiNameLetterSpacing.value;
             ui.previewRomaji.style.letterSpacing = `${romajiNameLetterSpacing}px`;
             ui.romajiNameLetterSpacingValue.textContent = romajiNameLetterSpacing;
-            
+
             updateAllDynamicLabels();
         },
         groupTheme() {
@@ -585,7 +591,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 update.infoColor();
                 update.infoBarBorder();
             }
-            
+
             const logoSrc = groupLogos[groupName];
             if (logoSrc) {
                 ui.imageLogo.src = logoSrc;
@@ -597,7 +603,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (groupNameImgSrc) {
                 ui.groupNameImage.src = groupNameImgSrc;
             }
-            
+
             if (groupName === '日向坂46') {
                 ui.groupNameSize.value = 12;
             } else {
@@ -606,7 +612,7 @@ document.addEventListener('DOMContentLoaded', function () {
             update.sizes();
         }
     };
-    
+
     // --- Event Handlers ---
     const handleRomajiToggle = () => {
         if (ui.romajiToggle.checked) {
@@ -619,7 +625,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         update.elementPositions();
     };
-    
+
     const handleThemeLine2Toggle = () => {
         if (ui.themeLine2Toggle.checked) {
             ui.themeLine2Block.classList.remove('hidden');
@@ -676,14 +682,14 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     };
-    
+
     const handleFontUpload = async (event) => {
         const file = event.target.files[0];
         if (!file) return;
 
         const fontName = file.name.replace(/\.(ttf|otf|woff|woff2)$/, '');
         ui.fontUploadStatus.textContent = translations[currentLang].fontLoading.replace('{fontName}', fontName);
-        
+
         const reader = new FileReader();
         reader.onload = async (e) => {
             try {
@@ -691,7 +697,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const fontFace = new FontFace(fontName, fontBuffer);
                 await fontFace.load();
                 document.fonts.add(fontFace);
-                
+
                 addCustomFontToSelectors(fontName);
                 update.fontStyles();
 
@@ -732,8 +738,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     ui.imageToCrop.src = event.target.result;
                     ui.cropModal.classList.remove('hidden');
                     ui.cropModal.classList.add('flex');
-                    
-                    if(cropper) cropper.destroy();
+
+                    if (cropper) cropper.destroy();
 
                     cropper = new Cropper(ui.imageToCrop, {
                         aspectRatio: 89 / 127, viewMode: 1, dragMode: 'move', background: false, autoCropArea: 1,
@@ -765,7 +771,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         [ui.infoBarPaddingY, ui.logoSize, ui.groupNameSize, ui.themeSize, ui.themeLine2Size, ui.memberNameSize, ui.romajiNameSize].forEach(el => addInputListener(el, update.sizes));
         [ui.logoX, ui.logoY, ui.groupNameX, ui.groupNameY, ui.themeX, ui.themeY, ui.themeLine2X, ui.themeLine2Y, ui.nameX, ui.nameY, ui.romajiX, ui.romajiY].forEach(el => addInputListener(el, update.elementPositions));
-        
+
         [ui.themeFontFamily, ui.nameFontFamily].forEach(el => addChangeListener(el, handleFontFamilyChange));
         [ui.themeLetterSpacing, ui.memberNameLetterSpacing, ui.romajiNameLetterSpacing].forEach(el => addInputListener(el, update.updateLetterSpacing));
 
@@ -773,10 +779,10 @@ document.addEventListener('DOMContentLoaded', function () {
         addInputListener(ui.romajiName, (e) => ui.previewRomaji.textContent = e.target.value);
         addInputListener(ui.photoTheme, (e) => ui.previewTheme.textContent = e.target.value);
         addChangeListener(ui.groupNameSelect, update.groupTheme);
-        
+
         addChangeListener(ui.romajiToggle, handleRomajiToggle);
         addChangeListener(ui.themeLine2Toggle, handleThemeLine2Toggle);
-        
+
         document.getElementById('theme-weight-controls').addEventListener('click', handleWeightSelection);
         document.getElementById('member-name-weight-controls').addEventListener('click', handleWeightSelection);
         document.getElementById('romaji-name-weight-controls').addEventListener('click', handleWeightSelection);
@@ -792,7 +798,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         });
-        
+
         ui.resetInfoBarBtn.addEventListener('click', resetInfoBarSettings);
         ui.imageContainer.addEventListener('mousedown', startDrag);
         document.addEventListener('mousemove', drag);
@@ -813,18 +819,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         ui.cancelCropBtn.addEventListener('click', () => {
-            if(cropper) {
+            if (cropper) {
                 cropper.destroy();
                 cropper = null;
             }
             ui.cropModal.classList.add('hidden');
             ui.cropModal.classList.remove('flex');
         });
-        
+
         document.addEventListener('keydown', (e) => {
             if (!ui.cropModal.classList.contains('hidden')) {
                 if (e.key === 'Enter') {
-                    e.preventDefault(); 
+                    e.preventDefault();
                     ui.cropBtn.click();
                 } else if (e.key === 'Escape') {
                     ui.cancelCropBtn.click();
@@ -852,12 +858,12 @@ document.addEventListener('DOMContentLoaded', function () {
             reader.readAsDataURL(file);
         }
     };
-    
+
     const resetInfoBarSettings = () => {
         const controls = ui.controlPanel.querySelectorAll(
             'input[type="range"], input[type="color"], select, input[type="checkbox"]'
         );
-    
+
         controls.forEach(control => {
             if (control.type === 'file' || control.id === 'group-name-select') {
                 return;
@@ -876,9 +882,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 control.value = control.defaultValue;
             }
         });
-    
+
         Object.values(update).forEach(func => func());
-        
+
         handleRomajiToggle();
         handleThemeLine2Toggle();
     };
@@ -936,7 +942,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 ctx.beginPath();
                 ctx.rect(containerX, containerY, containerRect.width, containerRect.height);
                 ctx.clip();
-                
+
                 const transformedWidth = containerRect.width * imageState.scale;
                 const transformedHeight = containerRect.height * imageState.scale;
                 const drawX = containerX + imageState.translateX + (containerRect.width - transformedWidth) / 2;
@@ -983,13 +989,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 const elRect = item.el.getBoundingClientRect();
                 const x = elRect.left - infoBarRect.left;
                 const y = elRect.top - infoBarRect.top;
-                
+
                 const drawX = infoBarX + x;
                 const drawY = infoBarY + y;
 
                 if (item.isLogo || item.isImage) {
                     const targetImg = item.isLogo ? (ui.imageLogo.src && !ui.imageLogo.classList.contains('hidden') && ui.imageLogo.complete ? ui.imageLogo : ui.svgLogo) : item.el;
-                    
+
                     if (targetImg.tagName === 'IMG') {
                         if (targetImg.complete) {
                             ctx.drawImage(targetImg, drawX, drawY, elRect.width, elRect.height);
@@ -1016,9 +1022,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     ctx.font = `${computedStyle.fontWeight} ${computedStyle.fontSize} ${computedStyle.fontFamily}`;
                     ctx.textAlign = computedStyle.textAlign;
                     ctx.textBaseline = 'middle';
-                    
+
                     let textX = drawX;
-                    if(ctx.textAlign === 'right') {
+                    if (ctx.textAlign === 'right') {
                         textX = drawX + elRect.width;
                     } else if (ctx.textAlign === 'center') {
                         textX = drawX + elRect.width / 2;
@@ -1063,7 +1069,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const init = () => {
         setupListeners();
-        
+
         const allControls = document.querySelectorAll('#control-panel input, #control-panel select, #control-panel textarea');
         allControls.forEach(control => {
             if (control.type === 'file') return;
@@ -1072,7 +1078,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 control.dispatchEvent(new Event(eventType, { bubbles: true }));
             });
         });
-        
+
         // Initial setup calls
         update.groupTheme();
         update.fontFamily();
@@ -1086,7 +1092,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const initialNameWeight = initialNameFont.includes('mplus1p') ? '300' : '400';
         document.querySelector(`#member-name-weight-controls .weight-btn[data-weight="${initialNameWeight}"]`).click();
         document.querySelector(`#romaji-name-weight-controls .weight-btn[data-weight="${initialNameWeight}"]`).click();
-        
+
         // Set language
         const userLang = navigator.language || navigator.userLanguage;
         let initialLang = 'zh';
