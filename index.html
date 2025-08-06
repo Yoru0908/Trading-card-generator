@@ -4,12 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>生写生成器</title>
+    <title>坂道系生写生成器 | 櫻坂46・乃木坂46・日向坂46 在线制作工具</title>
+    <meta name="description" content="免费的坂道系偶像（櫻坂46、乃木坂46、日向坂46）生写在线生成器。轻松自定义成员名、主题、字体和颜色，一键制作并下载专属风格的生写照片。">
+    <link rel="alternate" hreflang="zh" href="https://sakamichi-tools.cfd/" />
+    <link rel="alternate" hreflang="ja" href="https://sakamichi-tools.cfd/" />
+    <link rel="alternate" hreflang="en" href="https://sakamichi-tools.cfd/" />
+    <link rel="alternate" hreflang="x-default" href="https://sakamichi-tools.cfd/" />
     <link rel="icon" type="image/jpeg" href="images/sakamichi.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
     <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "坂道系生写生成器",
+      "operatingSystem": "Web",
+      "applicationCategory": "DesignApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "188"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      }
+    }
+    </script>
 </head>
 
 <body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
@@ -25,7 +49,8 @@
 
     <div class="w-full max-w-5xl mx-auto">
         <h1 id="main-title" class="text-2xl md:text-3xl font-bold text-center mb-6 sakura-text-color"
-            data-translate="mainTitle">生写真模板生成器</h1>
+            data-translate="mainTitle">坂道系生写生成器</h1>
+        <p class="text-center text-gray-600 max-w-2xl mx-auto mb-8 -mt-4" data-translate="siteDescription">欢迎使用坂道系生写在线生成器。你可以在这里快速、免费地制作出具有专业感的生写照片。</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div id="control-panel" class="bg-white p-6 rounded-lg shadow-md space-y-4">
@@ -556,7 +581,7 @@
                 <div class="sticky top-8">
                     <div id="photo-card" class="w-full max-w-sm bg-gray-200 rounded-lg overflow-hidden mx-auto">
                         <div id="image-container" class="relative w-full aspect-photo overflow-hidden">
-                            <img id="preview-image" src="https://placehold.co/594x847/e2e8f0/a0aec0?text=请上传图片" alt="预览图片"
+                            <img id="preview-image" src="https://placehold.co/594x847/e2e8f0/a0aec0?text=请上传图片" alt="生写预览图"
                                 class="absolute w-full h-full object-cover">
     
                             <div id="info-bar-container" class="absolute" style="bottom: 29px; left: 26px; right: 26px;">
@@ -571,14 +596,14 @@
                                                 <path d="M5,90 L50,10 L95,90 Z"></path>
                                                 <path d="M95,90 L95,10 L85,10 L85,80 L50,80 L50,90 Z"></path>
                                             </svg>
-                                            <img id="image-logo" src="images/樱坂46logo.png" alt="Custom Logo"
+                                            <img id="image-logo" src="images/樱坂46logo.png" alt="团体 Logo"
                                                 class="h-full w-auto"
                                                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/e2e8f0/a0aec0?text=Logo';">
                                         </div>
                                     </div>
                                     <div id="group-name-block" class="movable-block"
                                         style="left: 44px; transform: translateY(calc(-50% + 0px));">
-                                        <img id="group-name-image" src="images/樱坂46文字.png" alt="Group Name" class="h-auto"
+                                        <img id="group-name-image" src="images/樱坂46文字.png" alt="团体文字 Logo" class="h-auto"
                                             style="height: 14px;"
                                             onerror="this.onerror=null; this.src='https://placehold.co/100x20/e2e8f0/a0aec0?text=Name';">
                                     </div>

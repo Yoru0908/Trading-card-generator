@@ -2,7 +2,8 @@
 
 const translations = {
     en: {
-        mainTitle: "Photo Card Generator",
+        mainTitle: "Sakamichi Photo Card Generator",
+        siteDescription: "Free online generator for Sakamichi Series Trading cards<br>(Sakurazaka46, Nogizaka46, Hinatazaka46)<br>Easily customize to create and download your photo cards with one click.",
         customContentTitle: "Customize Content",
         uploadMainImageLabel: "1. Upload Main Image",
         memberNameLabel: "3. Member Name",
@@ -87,7 +88,8 @@ const translations = {
         footerDescription: "Photo Template Generator - Made for Sakamichi Idol Fans"
     },
     ja: {
-        mainTitle: "生写真ジェネレーター",
+        mainTitle: "坂道シリーズ 生写真ジェネレーター",
+        siteDescription: "無料の坂道シリーズ生写真オンラインジェネレーター<br>（櫻坂46、乃木坂46、日向坂46）<br>簡単にカスタマイズし、ワンクリックであなたの生写真を自作・ダウンロードできます。",
         customContentTitle: "コンテンツのカスタマイズ",
         uploadMainImageLabel: "1. メイン画像のアップロード",
         memberNameLabel: "3. メンバー名",
@@ -172,7 +174,8 @@ const translations = {
         footerDescription: "生写真テンプレートジェネレーター - 坂道系アイドルファンのために"
     },
     zh: {
-        mainTitle: "生写真模板生成器",
+        mainTitle: "坂道系生写生成器",
+        siteDescription: "免费的坂道系（樱坂46、乃木坂46、日向坂46）偶像生写在线生成器。<br>轻松自定义成员名、主题、字体和颜色，一键制作并下载专属风格的生写照片。",
         customContentTitle: "自定义内容",
         uploadMainImageLabel: "1. 上传主图片",
         memberNameLabel: "3. 成员姓名",
@@ -254,7 +257,7 @@ const translations = {
         uploadImageHint: "支持 JPG、PNG 格式",
         createdBy: "Created by",
         currentYear: "2025",
-        footerDescription: ""
+        footerDescription: "为坂道系偶像粉丝打造的生写制作工具"
     }
 };
 
@@ -269,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('[data-translate]').forEach(el => {
             const key = el.getAttribute('data-translate');
             if (translations[lang] && translations[lang][key]) {
-                el.textContent = translations[lang][key];
+                el.innerHTML = translations[lang][key];
             }
         });
 
