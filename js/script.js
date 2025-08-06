@@ -405,12 +405,6 @@ document.addEventListener('DOMContentLoaded', function () {
         romajiYValue: document.getElementById('romaji-y-value'),
         themeFontFamily: document.getElementById('theme-font-family'),
         nameFontFamily: document.getElementById('name-font-family'),
-        themeWeight: document.getElementById('theme-weight'),
-        memberNameWeight: document.getElementById('member-name-weight'),
-        romajiNameWeight: document.getElementById('romaji-name-weight'),
-        themeWeightInput: document.getElementById('theme-weight-input'),
-        memberNameWeightInput: document.getElementById('member-name-weight-input'),
-        romajiNameWeightInput: document.getElementById('romaji-name-weight-input'),
         themeLetterSpacing: document.getElementById('theme-letter-spacing'),
         themeLetterSpacingValue: document.getElementById('theme-letter-spacing-value'),
         memberNameLetterSpacing: document.getElementById('member-name-letter-spacing'),
@@ -559,25 +553,11 @@ document.addEventListener('DOMContentLoaded', function () {
             ui.romajiYValue.textContent = romajiY;
             updateAllDynamicLabels();
         },
-        updateFontAndWeight() {
-            const themeFont = ui.themeFontFamily.value;
-            ui.previewTheme.style.fontFamily = themeFont;
-            ui.previewThemeLine2.style.fontFamily = themeFont;
-
-            const nameFont = ui.nameFontFamily.value;
-            ui.previewName.style.fontFamily = nameFont;
-            ui.previewRomaji.style.fontFamily = nameFont;
-            
-            const themeWeight = ui.themeWeight.value;
-            ui.previewTheme.style.fontWeight = themeWeight;
-            ui.previewThemeLine2.style.fontWeight = themeWeight;
-            ui.themeWeightInput.value = themeWeight;
-
-            ui.previewName.style.fontWeight = ui.memberNameWeight.value;
-            ui.memberNameWeightInput.value = ui.memberNameWeight.value;
-
-            ui.previewRomaji.style.fontWeight = ui.romajiNameWeight.value;
-            ui.romajiNameWeightInput.value = ui.romajiNameWeight.value;
+        fontFamily() {
+            ui.previewTheme.style.fontFamily = ui.themeFontFamily.value;
+            ui.previewThemeLine2.style.fontFamily = ui.themeFontFamily.value;
+            ui.previewName.style.fontFamily = ui.nameFontFamily.value;
+            ui.previewRomaji.style.fontFamily = ui.nameFontFamily.value;
         },
         updateLetterSpacing() {
             const themeLetterSpacing = ui.themeLetterSpacing.value;
@@ -647,12 +627,58 @@ document.addEventListener('DOMContentLoaded', function () {
     const handleThemeLine2Toggle = () => {
         if (ui.themeLine2Toggle.checked) {
             ui.themeLine2Block.classList.remove('hidden');
-            ui.themeY.value = -4; // As requested
+            ui.themeY.value = -4;
         } else {
             ui.themeLine2Block.classList.add('hidden');
-            ui.themeY.value = 0; // Reset to default
+            ui.themeY.value = 0;
         }
         update.elementPositions();
+    };
+
+    const handleWeightSelection = (e) => {
+        const button = e.target.closest('.weight-btn');
+        if (!button) return;
+
+        const newWeight = button.dataset.weight;
+        const controlsId = button.parentElement.id;
+
+        // Remove active class from siblings and add to clicked button
+        button.parentElement.querySelectorAll('.weight-btn').forEach(sib => sib.classList.remove('active-weight'));
+        button.classList.add('active-weight');
+
+        // Apply font weight to the correct preview element
+        if (controlsId === 'theme-weight-controls') {
+            ui.previewTheme.style.fontWeight = newWeight;
+            ui.previewThemeLine2.style.fontWeight = newWeight;
+        } else if (controlsId === 'member-name-weight-controls') {
+            ui.previewName.style.fontWeight = newWeight;
+        } else if (controlsId === 'romaji-name-weight-controls') {
+            ui.previewRomaji.style.fontWeight = newWeight;
+        }
+    };
+
+    const handleFontFamilyChange = (e) => {
+        update.fontFamily();
+        const selectEl = e.target;
+        const newFontFamily = selectEl.value;
+        const isMplus = newFontFamily.includes('mplus1p');
+        const weightToSet = isMplus ? '300' : '400';
+
+        let targetControls;
+        if (selectEl.id === 'theme-font-family') {
+            targetControls = ['theme-weight-controls'];
+        } else if (selectEl.id === 'name-font-family') {
+            targetControls = ['member-name-weight-controls', 'romaji-name-weight-controls'];
+        }
+
+        if (targetControls) {
+            targetControls.forEach(controlsId => {
+                const buttonToClick = document.querySelector(`#${controlsId} .weight-btn[data-weight='${weightToSet}']`);
+                if (buttonToClick) {
+                    buttonToClick.click();
+                }
+            });
+        }
     };
     
     const handleFontUpload = async (event) => {
@@ -744,18 +770,20 @@ document.addEventListener('DOMContentLoaded', function () {
         [ui.infoBarPaddingY, ui.logoSize, ui.groupNameSize, ui.themeSize, ui.themeLine2Size, ui.memberNameSize, ui.romajiNameSize].forEach(el => addInputListener(el, update.sizes));
         [ui.logoX, ui.logoY, ui.groupNameX, ui.groupNameY, ui.themeX, ui.themeY, ui.themeLine2X, ui.themeLine2Y, ui.nameX, ui.nameY, ui.romajiX, ui.romajiY].forEach(el => addInputListener(el, update.elementPositions));
         
-        [ui.themeFontFamily, ui.nameFontFamily].forEach(el => addChangeListener(el, update.updateFontAndWeight));
-        [ui.themeWeight, ui.memberNameWeight, ui.romajiNameWeight].forEach(el => addInputListener(el, update.updateFontAndWeight));
+        [ui.themeFontFamily, ui.nameFontFamily].forEach(el => addChangeListener(el, handleFontFamilyChange));
         [ui.themeLetterSpacing, ui.memberNameLetterSpacing, ui.romajiNameLetterSpacing].forEach(el => addInputListener(el, update.updateLetterSpacing));
 
         addInputListener(ui.memberName, (e) => ui.previewName.textContent = e.target.value);
         addInputListener(ui.romajiName, (e) => ui.previewRomaji.textContent = e.target.value);
         addInputListener(ui.photoTheme, (e) => ui.previewTheme.textContent = e.target.value);
-        addInputListener(ui.photoThemeLine2, (e) => ui.previewThemeLine2.textContent = e.target.value);
         addChangeListener(ui.groupNameSelect, update.groupTheme);
         
         addChangeListener(ui.romajiToggle, handleRomajiToggle);
         addChangeListener(ui.themeLine2Toggle, handleThemeLine2Toggle);
+        
+        document.getElementById('theme-weight-controls').addEventListener('click', handleWeightSelection);
+        document.getElementById('member-name-weight-controls').addEventListener('click', handleWeightSelection);
+        document.getElementById('romaji-name-weight-controls').addEventListener('click', handleWeightSelection);
 
         document.querySelectorAll('.swatch-container button').forEach(button => {
             button.addEventListener('click', (e) => {
@@ -815,37 +843,9 @@ document.addEventListener('DOMContentLoaded', function () {
             ui.saveModal.classList.remove('flex');
         });
 
-        const weightControls = [
-            { slider: ui.themeWeight, input: ui.themeWeightInput },
-            { slider: ui.memberNameWeight, input: ui.memberNameWeightInput },
-            { slider: ui.romajiNameWeight, input: ui.romajiNameWeightInput },
-        ];
-
-        weightControls.forEach(control => {
-            control.input.addEventListener('input', () => {
-                control.slider.value = control.input.value;
-                update.fontStyles();
-            });
-        });
-
-        document.querySelectorAll('.tick-container').forEach(container => {
-            container.addEventListener('click', (e) => {
-                const tick = e.target.closest('.tick');
-                if (!tick) return;
-
-                const value = tick.dataset.value;
-                const controlsId = container.dataset.controls;
-                
-                const slider = document.getElementById(controlsId);
-                const input = document.getElementById(controlsId + '-input');
-
-                if (slider && input) {
-                    slider.value = value;
-                    input.value = value;
-                    update.fontStyles();
-                }
-            });
-        });
+        document.getElementById('theme-weight-controls').addEventListener('click', handleWeightSelection);
+        document.getElementById('member-name-weight-controls').addEventListener('click', handleWeightSelection);
+        document.getElementById('romaji-name-weight-controls').addEventListener('click', handleWeightSelection);
     };
 
     const handleFileUpload = (event, callback) => {
@@ -1065,19 +1065,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // --- Initialization ---
     const init = () => {
         setupListeners();
         
         const allControls = document.querySelectorAll('#control-panel input, #control-panel select, #control-panel textarea');
         allControls.forEach(control => {
-            const event = new Event('input', { bubbles: true });
-            const changeEvent = new Event('change', { bubbles: true });
-            control.dispatchEvent(event);
-            control.dispatchEvent(changeEvent);
+            if (control.type === 'file') return;
+            // Dispatch both events to ensure all updates are triggered
+            ['input', 'change'].forEach(eventType => {
+                control.dispatchEvent(new Event(eventType, { bubbles: true }));
+            });
         });
-        update.groupTheme();
         
+        // Initial setup calls
+        update.groupTheme();
+        update.fontFamily();
+
+        // Set initial weights correctly by simulating clicks
+        const initialThemeFont = ui.themeFontFamily.value;
+        const initialThemeWeight = initialThemeFont.includes('mplus1p') ? '300' : '400';
+        document.querySelector(`#theme-weight-controls .weight-btn[data-weight="${initialThemeWeight}"]`).click();
+
+        const initialNameFont = ui.nameFontFamily.value;
+        const initialNameWeight = initialNameFont.includes('mplus1p') ? '300' : '400';
+        document.querySelector(`#member-name-weight-controls .weight-btn[data-weight="${initialNameWeight}"]`).click();
+        document.querySelector(`#romaji-name-weight-controls .weight-btn[data-weight="${initialNameWeight}"]`).click();
+        
+        // Set language
         const userLang = navigator.language || navigator.userLanguage;
         let initialLang = 'zh';
         if (userLang.startsWith('en')) {

@@ -9,11 +9,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Yuji+Syuku&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -125,7 +120,8 @@
                                 class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm rounded-md">
                                 <option value="'UDXinWan', sans-serif" selected data-translate="defaultFont">
                                     UDXinWan (默认)</option>
-                                <option value="'mplus', sans-serif">mplus</option>
+                                <option value="'mplus1p', sans-serif">mplus1p</option>
+                                <option value="'Soft Go Std', sans-serif">Soft Go Std</option>
                                 <option value="'bebasneue', sans-serif">bebasneue</option>
                                 <option value="'AaChaoDaJianYuan', sans-serif">简圆</option>
                                 <option value="'Kosugi Maru', sans-serif">Kosugi Maru</option>
@@ -138,7 +134,8 @@
                                 class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-violet-500 focus:border-violet-500 sm:text-sm rounded-md">
                                 <option value="'UDXinWan', sans-serif" selected data-translate="defaultFont">
                                     UDXinWan (默认)</option>
-                                <option value="'mplus', sans-serif">mplus</option>
+                                <option value="'mplus1p', sans-serif">mplus1p</option>
+                                <option value="'Soft Go Std', sans-serif">Soft Go Std</option>
                                 <option value="'bebasneue', sans-serif">bebasneue</option>
                                 <option value="'AaChaoDaJianYuan', sans-serif">简圆</option>
                                 <option value="'Kosugi Maru', sans-serif">Kosugi Maru</option>
@@ -153,57 +150,27 @@
                         </div>
                         <div class="grid grid-cols-2 gap-x-4 gap-y-2">
                             <div class="w-full">
-                                <div class="flex justify-between items-center">
-                                    <label for="theme-weight" class="text-sm text-gray-500"
-                                        data-translate="themeWeightLabel">主题粗细:</label>
-                                    <input type="number" id="theme-weight-input" min="100" max="900" value="100"
-                                        step="10"
-                                        class="w-16 text-right bg-gray-50 rounded-md px-1 py-0.5 border border-gray-200">
-                                </div>
-                                <input type="range" id="theme-weight" min="100" max="900" value="100" step="1"
-                                    class="w-full">
-                                <div class="flex justify-between w-full text-xs text-gray-400 px-1 tick-container"
-                                    data-controls="theme-weight">
-                                    <button data-value="100" class="tick hover:text-violet-600">100</button>
-                                    <button data-value="400" class="tick hover:text-violet-600">400</button>
-                                    <button data-value="700" class="tick hover:text-violet-600">700</button>
-                                    <button data-value="900" class="tick hover:text-violet-600">900</button>
+                                <label class="text-sm text-gray-500" data-translate="themeWeightLabel">主题粗细:</label>
+                                <div class="flex space-x-2 mt-1" id="theme-weight-controls">
+                                    <button type="button" class="weight-btn flex-1 px-2 py-1 border rounded-md text-xs" data-weight="300">细</button>
+                                    <button type="button" class="weight-btn flex-1 px-2 py-1 border rounded-md text-xs" data-weight="400">中</button>
+                                    <button type="button" class="weight-btn flex-1 px-2 py-1 border rounded-md text-xs" data-weight="500">粗</button>
                                 </div>
                             </div>
                             <div class="w-full">
-                                <div class="flex justify-between items-center">
-                                    <label for="member-name-weight" class="text-sm text-gray-500"
-                                        data-translate="nameWeightLabel">姓名粗细:</label>
-                                    <input type="number" id="member-name-weight-input" min="100" max="900" value="500"
-                                        step="10"
-                                        class="w-16 text-right bg-gray-50 rounded-md px-1 py-0.5 border border-gray-200">
-                                </div>
-                                <input type="range" id="member-name-weight" min="100" max="900" value="500" step="1"
-                                    class="w-full">
-                                <div class="flex justify-between w-full text-xs text-gray-400 px-1 tick-container"
-                                    data-controls="member-name-weight">
-                                    <button data-value="100" class="tick hover:text-violet-600">100</button>
-                                    <button data-value="400" class="tick hover:text-violet-600">400</button>
-                                    <button data-value="700" class="tick hover:text-violet-600">700</button>
-                                    <button data-value="900" class="tick hover:text-violet-600">900</button>
+                                <label class="text-sm text-gray-500" data-translate="nameWeightLabel">姓名粗细:</label>
+                                <div class="flex space-x-2 mt-1" id="member-name-weight-controls">
+                                    <button type="button" class="weight-btn flex-1 px-2 py-1 border rounded-md text-xs" data-weight="300">细</button>
+                                    <button type="button" class="weight-btn flex-1 px-2 py-1 border rounded-md text-xs" data-weight="400">中</button>
+                                    <button type="button" class="weight-btn flex-1 px-2 py-1 border rounded-md text-xs" data-weight="500">粗</button>
                                 </div>
                             </div>
                             <div class="w-full">
-                                <div class="flex justify-between items-center">
-                                    <label for="romaji-name-weight" class="text-sm text-gray-500"
-                                        data-translate="romajiWeightLabel">罗马字粗细:</label>
-                                    <input type="number" id="romaji-name-weight-input" min="100" max="900" value="400"
-                                        step="10"
-                                        class="w-16 text-right bg-gray-50 rounded-md px-1 py-0.5 border border-gray-200">
-                                </div>
-                                <input type="range" id="romaji-name-weight" min="100" max="900" value="400" step="1"
-                                    class="w-full">
-                                <div class="flex justify-between w-full text-xs text-gray-400 px-1 tick-container"
-                                    data-controls="romaji-name-weight">
-                                    <button data-value="100" class="tick hover:text-violet-600">100</button>
-                                    <button data-value="400" class="tick hover:text-violet-600">400</button>
-                                    <button data-value="700" class="tick hover:text-violet-600">700</button>
-                                    <button data-value="900" class="tick hover:text-violet-600">900</button>
+                                <label class="text-sm text-gray-500" data-translate="romajiWeightLabel">罗马字粗细:</label>
+                                <div class="flex space-x-2 mt-1" id="romaji-name-weight-controls">
+                                    <button type="button" class="weight-btn flex-1 px-2 py-1 border rounded-md text-xs" data-weight="300">细</button>
+                                    <button type="button" class="weight-btn flex-1 px-2 py-1 border rounded-md text-xs" data-weight="400">中</button>
+                                    <button type="button" class="weight-btn flex-1 px-2 py-1 border rounded-md text-xs" data-weight="500">粗</button>
                                 </div>
                             </div>
                         </div>

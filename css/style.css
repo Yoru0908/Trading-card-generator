@@ -1,3 +1,70 @@
+@font-face {
+    font-family: 'UDXinWan';
+    src: url('../fonts/A-OTF 新丸ゴ Pro-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UDXinWan';
+    src: url('../fonts/A-OTF 新丸ゴ Pro-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UDXinWan';
+    src: url('../fonts/A-OTF 新丸ゴ Pro-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'mplus1p';
+    src: url('../fonts/MPLUS1p-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'mplus1p';
+    src: url('../fonts/MPLUS1p-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'mplus1p';
+    src: url('../fonts/MPLUS1p-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'mplus1p';
+    src: url('../fonts/MPLUS1p-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Soft Go Std';
+    src: url('../fonts/Soft Go Std Ligh.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Soft Go Std';
+    src: url('../fonts/Soft Go Std Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Soft Go Std';
+    src: url('../fonts/Soft Go Std Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'bebasneue';
+    src: url('../fonts/BebasNeue-Regular.ttf') format('truetype');
+}
 
 @font-face {
     font-family: 'AaChaoDaJianYuan';
@@ -5,18 +72,8 @@
 }
 
 @font-face {
-    font-family: 'UDXinWan';
-    src: url('../fonts/A-OTF-UDShinMGoPro-Regular-2.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'mplus';
-    src: url('../fonts/MPLUS1p-Light.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'bebasneue';
-    src: url('../fonts/BebasNeue-Regular.ttf') format('truetype');
+    font-family: 'Kosugi Maru';
+    src: url('../fonts/KosugiMaru-Regular.ttf') format('truetype');
 }
 
 body {
@@ -128,6 +185,13 @@ details>summary::-webkit-details-marker {
     cursor: pointer;
 }
 
+.weight-btn.active-weight {
+    background-color: #8B5CF6;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
 /* 折叠按钮样式 */
 details[open] > summary svg {
     transform: rotate(180deg);
@@ -208,6 +272,7 @@ details details details > summary::before {
     width: 1px;
     height: 12px;
     background: #0ea5e9;
+    border-radius: 1px;
 }
 
 details details details > summary:hover {
