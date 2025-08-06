@@ -295,13 +295,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        if (siteLinks) {
-            if (lang === 'zh') {
-                siteLinks.style.display = 'block';
-            } else {
-                siteLinks.style.display = 'none';
-            }
-        }
         
         updateAllDynamicLabels();
     };
