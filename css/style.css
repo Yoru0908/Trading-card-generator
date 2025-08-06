@@ -1,45 +1,60 @@
+/* UI Fonts */
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('../fonts/NotoSansSC-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 @font-face {
     font-family: 'UDXinWan';
     src: url('../fonts/A-OTF 新丸ゴ Pro-Light.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'UDXinWan';
     src: url('../fonts/A-OTF 新丸ゴ Pro-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'UDXinWan';
     src: url('../fonts/A-OTF 新丸ゴ Pro-Medium.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 
-@font-face {
-    font-family: 'mplus1p';
-    src: url('../fonts/MPLUS1p-Thin.ttf') format('truetype');
-    font-weight: 100;
-    font-style: normal;
-}
 @font-face {
     font-family: 'mplus1p';
     src: url('../fonts/MPLUS1p-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'mplus1p';
     src: url('../fonts/MPLUS1p-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'mplus1p';
     src: url('../fonts/MPLUS1p-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -47,37 +62,43 @@
     src: url('../fonts/Soft Go Std Ligh.otf') format('opentype');
     font-weight: 300;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Soft Go Std';
     src: url('../fonts/Soft Go Std Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Soft Go Std';
     src: url('../fonts/Soft Go Std Medium.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'bebasneue';
     src: url('../fonts/BebasNeue-Regular.ttf') format('truetype');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'AaChaoDaJianYuan';
     src: url('../fonts/Aa超大简圆 2万字.ttf') format('truetype');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Kosugi Maru';
     src: url('../fonts/KosugiMaru-Regular.ttf') format('truetype');
+    font-display: swap;
 }
 
 body {
-    font-family: 'Kosugi Maru', sans-serif;
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
     background-color: #f0f2f5;
 }
 

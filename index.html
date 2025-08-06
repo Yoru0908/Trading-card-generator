@@ -11,10 +11,33 @@
     <link rel="alternate" hreflang="en" href="https://sakamichi-tools.cfd/" />
     <link rel="alternate" hreflang="x-default" href="https://sakamichi-tools.cfd/" />
     <link rel="icon" type="image/jpeg" href="images/sakamichi.jpg">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
-    <link rel="stylesheet" href="css/style.css">
+            <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+      tailwind.config = {
+        content: ["./index.html", "./js/script.js"],
+        theme: {
+          extend: {
+            // ...
+          }
+        }
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css"></noscript>
+    <link rel="preload" href="fonts/KosugiMaru-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/A-OTF-UDShinMGoPro-Regular-2.otf" as="font" type="font/otf" crossorigin>
+    <style>
+    body {
+        font-family: 'Kosugi Maru', sans-serif;
+        background-color: #f0f2f5;
+    }
+    .sakura-text-color { color: #F19DB5; }
+    .aspect-photo { aspect-ratio: 89 / 127; }
+    #photo-card { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+    </style>
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -40,7 +63,7 @@
 
     <div class="fixed top-4 right-4 z-50">
         <select id="language-switcher"
-            class="bg-white border border-gray-300 rounded-md py-2 px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-500">
+            class="bg-white border border-gray-300 rounded-md py-2 pl-3 pr-8 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-500">
             <option value="zh">中文</option>
             <option value="en">English</option>
             <option value="ja">日本語</option>
@@ -597,8 +620,8 @@
                                                 <path d="M95,90 L95,10 L85,10 L85,80 L50,80 L50,90 Z"></path>
                                             </svg>
                                             <img id="image-logo" src="images/樱坂46logo.png" alt="团体 Logo"
-                                                class="h-full w-auto"
-                                                onerror="this.onerror=null; this.src='https://placehold.co/100x100/e2e8f0/a0aec0?text=Logo';">
+                                                 class="h-full w-auto"
+                                                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/e2e8f0/a0aec0?text=Logo';">
                                         </div>
                                     </div>
                                     <div id="group-name-block" class="movable-block"
@@ -709,8 +732,8 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js" defer></script>
+    <script src="js/script.js" defer></script>
 </body>
 
 </html>
