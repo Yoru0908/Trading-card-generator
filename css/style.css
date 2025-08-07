@@ -1,4 +1,3 @@
-
 #language-switcher {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -14,28 +13,7 @@
     display: none;
 }
 
-@font-face {
-    font-family: 'UDXinWan';
-    src: url('../fonts/A-OTF 新丸ゴ Pro-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'UDXinWan';
-    src: url('../fonts/A-OTF 新丸ゴ Pro-Regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'UDXinWan';
-    src: url('../fonts/A-OTF 新丸ゴ Pro-Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
+/* 只保留免费字体 */
 @font-face {
     font-family: 'mplus1p';
     src: url('../fonts/MPLUS1p-Light.ttf') format('truetype');
@@ -59,43 +37,153 @@
 }
 
 @font-face {
-    font-family: 'Soft Go Std';
-    src: url('../fonts/Soft Go Std Ligh.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Soft Go Std';
-    src: url('../fonts/Soft Go Std Regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Soft Go Std';
-    src: url('../fonts/Soft Go Std Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
     font-family: 'bebasneue';
     src: url('../fonts/BebasNeue-Regular.ttf') format('truetype');
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'AaChaoDaJianYuan';
-    src: url('../fonts/Aa超大简圆 2万字.ttf') format('truetype');
+    font-family: 'Kosugi Maru';
+    src: url('../fonts/KosugiMaru-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
     font-display: swap;
 }
 
-@font-face {
-    font-family: 'Kosugi Maru';
-    src: url('../fonts/KosugiMaru-Regular.ttf') format('truetype');
-    font-display: swap;
+/* Kosugi Maru 字体调整 - 精确模拟 UDXinWan 的度量特性 */
+.kosugi-maru-adjusted {
+    /* 基础字体设置 */
+    font-family: 'Kosugi Maru', sans-serif;
+    
+    /* 关键调整1: 行高调整 - 统一设置为2倍字号 */
+    line-height: 2;
+    
+    /* 关键调整2: 轻微的字重增强 - 只使用text-stroke */
+    font-weight: 400;  /* 使用原生字重，避免浏览器合成 */
+    
+    /* 轻微的text-stroke，接近UDXinWan的视觉粗细 */
+    -webkit-text-stroke: 0.12px currentColor;
+    text-stroke: 0.12px currentColor;
+    
+    /* 关键调整3: 主要通过spacing调整，减少transform使用 */
+    /* 增加letter-spacing来补偿宽度差异，减少对transform的依赖 */
+    letter-spacing: -0.045em;  /* 稍微增加字间距调整 */
+    
+    /* 关键调整4: 空格宽度调整 - 解决空格宽度差异问题 */
+    word-spacing: -0.25em;  /* 稍微增加空格调整 */
+    
+    /* 关键调整5: 极轻微的水平调整，减少缩放感 */
+    /* 减少scaleX的程度，避免明显的缩放感觉 */
+    transform: scaleX(0.99);  /* 从0.98调整到0.99，减少缩放感 */
+    transform-origin: center center;
+    
+    /* 优化渲染质量 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* 防止字体变形 */
+    font-feature-settings: "kern" 1;
+    font-kerning: auto;
+    
+    /* 高级空格处理 - 使用CSS自定义属性进行精确控制 */
+    --space-adjustment: -0.15em;
+}
+
+/* 针对不同字号的精确调整 - 只使用text-stroke，更清晰 */
+.kosugi-maru-adjusted.size-8 {
+    letter-spacing: -0.035em;
+    -webkit-text-stroke: 0.08px currentColor;
+    text-stroke: 0.08px currentColor;
+}
+
+.kosugi-maru-adjusted.size-13 {
+    letter-spacing: -0.04em;
+    -webkit-text-stroke: 0.1px currentColor;
+    text-stroke: 0.1px currentColor;
+}
+
+.kosugi-maru-adjusted.size-14 {
+    letter-spacing: -0.042em;
+    -webkit-text-stroke: 0.1px currentColor;
+    text-stroke: 0.1px currentColor;
+}
+
+.kosugi-maru-adjusted.size-20 {
+    letter-spacing: -0.045em;
+    -webkit-text-stroke: 0.12px currentColor;
+    text-stroke: 0.12px currentColor;
+}
+
+.kosugi-maru-adjusted.size-24 {
+    letter-spacing: -0.045em;
+    -webkit-text-stroke: 0.14px currentColor;
+    text-stroke: 0.14px currentColor;
+}
+
+.kosugi-maru-adjusted.size-28 {
+    letter-spacing: -0.045em;
+    -webkit-text-stroke: 0.16px currentColor;
+    text-stroke: 0.16px currentColor;
+}
+
+/* 为预览元素应用精确调整 - 只使用text-stroke，更清晰 */
+#preview-theme.kosugi-maru-font,
+#preview-theme-line-2.kosugi-maru-font {
+    font-family: 'Kosugi Maru', sans-serif;
+    line-height: 2;
+    letter-spacing: -0.035em;
+    word-spacing: -0.2em;  /* 空格宽度调整 */
+    font-weight: 400;  /* 使用原生字重 */
+    
+    /* 轻微的字体增强 - 只使用text-stroke */
+    -webkit-text-stroke: 0.08px currentColor;
+    text-stroke: 0.08px currentColor;
+    
+    transform: scaleX(0.99);  /* 减少缩放感 */
+    transform-origin: center center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1;
+    font-kerning: auto;
+}
+
+#preview-name.kosugi-maru-font {
+    font-family: 'Kosugi Maru', sans-serif;
+    line-height: 2;
+    letter-spacing: -0.045em;
+    word-spacing: -0.25em;   /* 姓名中的空格调整更明显 */
+    font-weight: 400;  /* 使用原生字重 */
+    
+    /* 轻微的字体增强 - 20px字号，只使用text-stroke */
+    -webkit-text-stroke: 0.12px currentColor;
+    text-stroke: 0.12px currentColor;
+    
+    transform: scaleX(0.99);  /* 减少缩放感 */
+    transform-origin: center center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1;
+    font-kerning: auto;
+}
+
+#preview-romaji.kosugi-maru-font {
+    font-family: 'Kosugi Maru', sans-serif;
+    line-height: 2;
+    letter-spacing: -0.04em;
+    word-spacing: -0.22em;  /* 罗马字空格调整 */
+    font-weight: 400;  /* 使用原生字重 */
+    
+    /* 轻微的字体增强 - 13px字号，只使用text-stroke */
+    -webkit-text-stroke: 0.1px currentColor;
+    text-stroke: 0.1px currentColor;
+    
+    transform: scaleX(0.99);  /* 减少缩放感 */
+    transform-origin: center center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1;
+    font-kerning: auto;
 }
 
 body {
@@ -183,12 +271,12 @@ details>summary::-webkit-details-marker {
 
 #info-bar {
     position: relative;
-    overflow: hidden;  
+    overflow: hidden;
 }
 .movable-block {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);  
+    transform: translateY(-50%);
 }
 
 /* Cropper Modal Styles */
@@ -217,7 +305,6 @@ details>summary::-webkit-details-marker {
     color: white;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-
 
 /* 折叠按钮样式 */
 details[open] > summary svg {
@@ -327,7 +414,7 @@ details > div {
     padding: 12px 0;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
                 transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(-8px);
@@ -348,7 +435,7 @@ details details > div {
     padding: 8px 12px;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+    transition: max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
                 opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
                 transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(-6px);
@@ -369,7 +456,7 @@ details details details > div {
     padding: 6px 10px;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+    transition: max-height 0.2s cubic-bezier(0.4, 0, 0.2, 1),
                 opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1),
                 transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(-4px);
@@ -380,10 +467,6 @@ details details details[open] > div {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* 滑动动画已替换为transition，提供更平滑的展开/收起效果 */
-
-/* 增强子菜单视觉层次 - 已在上面定义，这里移除重复 */
 
 /* 为输入控件添加更好的样式 */
 input[type="text"], input[type="color"], select {
@@ -454,30 +537,30 @@ footer a:hover::after {
         margin: 6px 0;
         padding-bottom: 8px;
     }
-    
+
     details > summary {
         padding: 8px 10px;
     }
-    
+
     details details > summary {
         margin-left: 12px;
         padding: 6px 10px;
     }
-    
+
     details details details > summary {
         margin-left: 20px;
         padding: 4px 8px;
     }
-    
+
     footer {
         margin-top: 8px;
         margin-bottom: 4px;
     }
-    
+
     footer p {
         font-size: 0.8rem;
     }
-    
+
     footer .text-xs {
         font-size: 0.7rem;
     }
