@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐私政策 | 坂道系生写制作器</title>
+    <link rel="icon" type="image/jpeg" href="images/sakamichi.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Yuji+Syuku&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <!-- 语言切换器 -->
+    <div class="fixed top-4 right-4 z-50">
+        <select id="language-switcher"
+            class="bg-white border border-gray-300 rounded-md py-2 px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-500">
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+        </select>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- 返回按钮 -->
+        <div class="mb-6">
+            <a href="index.html" class="inline-flex items-center text-violet-600 hover:text-violet-700 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span data-translate="backToHome">返回首页</span>
+            </a>
+        </div>
+
+        <!-- 标题 -->
+        <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center" data-translate="privacyPolicyTitle">隐私政策</h1>
+
+        <!-- 内容 -->
+        <div class="bg-white rounded-lg shadow-md p-8 space-y-6">
+            <div class="text-sm text-gray-500 mb-6" data-translate="lastUpdated">
+                最后更新：2025年1月
+            </div>
+
+            <section>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4" data-translate="dataCollectionTitle">数据收集</h2>
+                <p class="text-gray-600 leading-relaxed" data-translate="dataCollectionContent">
+                    本工具完全在您的浏览器本地运行，不会收集、存储或传输任何个人信息。您上传的图片和输入的文字仅在您的设备上处理，不会发送到任何服务器。
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4" data-translate="cookiesTitle">Cookie使用</h2>
+                <p class="text-gray-600 leading-relaxed" data-translate="cookiesContent">
+                    本网站可能使用Cookie来保存您的语言偏好设置，以提供更好的用户体验。这些Cookie不包含任何个人身份信息。
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4" data-translate="thirdPartyTitle">第三方服务</h2>
+                <p class="text-gray-600 leading-relaxed" data-translate="thirdPartyContent">
+                    本网站使用以下第三方服务：<br>
+                    • Google Fonts - 用于字体加载<br>
+                    • Tailwind CSS CDN - 用于样式框架<br>
+                    这些服务可能有自己的隐私政策，请查阅相关服务提供商的隐私条款。
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4" data-translate="dataSafetyTitle">数据安全</h2>
+                <p class="text-gray-600 leading-relaxed" data-translate="dataSafetyContent">
+                    由于所有处理都在您的本地设备上进行，您的数据安全完全由您自己控制。我们建议您不要在公共设备上使用本工具处理敏感内容。
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4" data-translate="contactTitle">联系我们</h2>
+                <p class="text-gray-600 leading-relaxed" data-translate="contactContent">
+                    如果您对本隐私政策有任何疑问，请通过以下方式联系我们：<br>
+                    • B站：多线程败犬Yoru<br>
+                    • 微博：多线程败犬Yoru<br>
+                    • 反馈表单：<a href="https://forms.gle/xKJbXsUP4g8pLJSf7" target="_blank" class="text-violet-600 hover:underline">点击此处</a>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // 多语言支持
+        const translations = {
+            zh: {
+                backToHome: "返回首页",
+                privacyPolicyTitle: "隐私政策",
+                lastUpdated: "最后更新：2025年1月",
+                dataCollectionTitle: "数据收集",
+                dataCollectionContent: "本工具完全在您的浏览器本地运行，不会收集、存储或传输任何个人信息。您上传的图片和输入的文字仅在您的设备上处理，不会发送到任何服务器。",
+                cookiesTitle: "Cookie使用",
+                cookiesContent: "本网站可能使用Cookie来保存您的语言偏好设置，以提供更好的用户体验。这些Cookie不包含任何个人身份信息。",
+                thirdPartyTitle: "第三方服务",
+                thirdPartyContent: "本网站使用以下第三方服务：<br>• Google Fonts - 用于字体加载<br>• Tailwind CSS CDN - 用于样式框架<br>这些服务可能有自己的隐私政策，请查阅相关服务提供商的隐私条款。",
+                dataSafetyTitle: "数据安全",
+                dataSafetyContent: "由于所有处理都在您的本地设备上进行，您的数据安全完全由您自己控制。我们建议您不要在公共设备上使用本工具处理敏感内容。",
+                contactTitle: "联系我们",
+                contactContent: "如果您对本隐私政策有任何疑问，请通过以下方式联系我们：<br>• B站：多线程败犬Yoru<br>• 微博：多线程败犬Yoru<br>• 反馈表单：<a href=\"https://forms.gle/xKJbXsUP4g8pLJSf7\" target=\"_blank\" class=\"text-violet-600 hover:underline\">点击此处</a>"
+            },
+            en: {
+                backToHome: "Back to Home",
+                privacyPolicyTitle: "Privacy Policy",
+                lastUpdated: "Last Updated: January 2025",
+                dataCollectionTitle: "Data Collection",
+                dataCollectionContent: "This tool runs entirely locally in your browser and does not collect, store, or transmit any personal information. Images you upload and text you enter are processed only on your device and are not sent to any servers.",
+                cookiesTitle: "Cookie Usage",
+                cookiesContent: "This website may use cookies to save your language preference settings to provide a better user experience. These cookies do not contain any personally identifiable information.",
+                thirdPartyTitle: "Third-Party Services",
+                thirdPartyContent: "This website uses the following third-party services:<br>• Google Fonts - for font loading<br>• Tailwind CSS CDN - for styling framework<br>These services may have their own privacy policies. Please refer to the privacy terms of the relevant service providers.",
+                dataSafetyTitle: "Data Security",
+                dataSafetyContent: "Since all processing is done on your local device, your data security is entirely under your control. We recommend not using this tool to process sensitive content on public devices.",
+                contactTitle: "Contact Us",
+                contactContent: "If you have any questions about this privacy policy, please contact us through:<br>• Bilibili: 多线程败犬Yoru<br>• Weibo: 多线程败犬Yoru<br>• Feedback Form: <a href=\"https://forms.gle/xKJbXsUP4g8pLJSf7\" target=\"_blank\" class=\"text-violet-600 hover:underline\">Click Here</a>"
+            },
+            ja: {
+                backToHome: "ホームに戻る",
+                privacyPolicyTitle: "プライバシーポリシー",
+                lastUpdated: "最終更新：2025年1月",
+                dataCollectionTitle: "データ収集",
+                dataCollectionContent: "このツールは完全にブラウザ上でローカルに動作し、個人情報の収集、保存、送信は一切行いません。アップロードした画像や入力したテキストは、お客様のデバイス上でのみ処理され、サーバーに送信されることはありません。",
+                cookiesTitle: "Cookieの使用",
+                cookiesContent: "本ウェブサイトでは、より良いユーザーエクスペリエンスを提供するために、言語設定を保存するためのCookieを使用する場合があります。これらのCookieには個人を特定できる情報は含まれていません。",
+                thirdPartyTitle: "第三者サービス",
+                thirdPartyContent: "本ウェブサイトでは以下の第三者サービスを使用しています：<br>• Google Fonts - フォント読み込み用<br>• Tailwind CSS CDN - スタイリングフレームワーク用<br>これらのサービスには独自のプライバシーポリシーがある場合があります。関連するサービスプロバイダーのプライバシー条項をご確認ください。",
+                dataSafetyTitle: "データセキュリティ",
+                dataSafetyContent: "すべての処理がお客様のローカルデバイス上で行われるため、データのセキュリティは完全にお客様の管理下にあります。公共のデバイスでは機密性の高いコンテンツの処理にこのツールを使用しないことをお勧めします。",
+                contactTitle: "お問い合わせ",
+                contactContent: "このプライバシーポリシーについてご質問がございましたら、以下の方法でお問い合わせください：<br>• Bilibili：多线程败犬Yoru<br>• Weibo：多线程败犬Yoru<br>• フィードバックフォーム：<a href=\"https://forms.gle/xKJbXsUP4g8pLJSf7\" target=\"_blank\" class=\"text-violet-600 hover:underline\">こちらをクリック</a>"
+            }
+        };
+
+        // 语言切换功能
+        function updateLanguage(lang) {
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang === 'ja' ? 'ja' : 'en';
+            
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // 初始化语言
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('selectedLanguage') || 'zh';
+            const languageSwitcher = document.getElementById('language-switcher');
+            languageSwitcher.value = savedLang;
+            updateLanguage(savedLang);
+
+            languageSwitcher.addEventListener('change', function() {
+                updateLanguage(this.value);
+            });
+        });
+    </script>
+</body>
+
+</html>
